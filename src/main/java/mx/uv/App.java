@@ -20,34 +20,6 @@ public class App
     static HashMap<String, Usuario> usuarios=new HashMap<>();
     public static void main( String[] args )
     {
-        // System.out.println( "Hello World!" );
-        // port(80);
-
-        
-        package mx.uv;
-
-import static spark.Spark.*;
-
-import java.util.HashMap;
-import java.util.UUID;
-import com.google.gson.*;
-
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    static Gson gson = new Gson();
-    static HashMap<String, Usuario> usuarios = new HashMap<String, Usuario>();
-    
-    public static void main( String[] args )
-    {
-        
-        // System.out.println( "Hello World!" );
-
-        //port(80);
-        port(getHerokuAssignedPort());
 
         options("/*", (request, response) -> {
 
@@ -63,6 +35,7 @@ public class App
 
             return "OK";
         });
+
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
         get("/usuarios", (request,response)->{
